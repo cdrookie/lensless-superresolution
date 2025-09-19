@@ -51,7 +51,8 @@ end
 %% 子函数：带自动裁剪的预处理
 function [y, best_crop_x, best_crop_y] = preprocess_with_auto_crop(data_folder, crop_size)
     
-    Picture_format = '.bmp';
+    % 支持多种图片格式
+    Picture_formats = {'.bmp', '.png', '.jpg', '.jpeg', '.tif', '.tiff', '.gif'};
     
     % 获取图像尺寸（假设从第一张图像获得）
     sample_img = imread(['./', data_folder, '/hologram/r/1', Picture_format]);
@@ -417,3 +418,4 @@ function w_o = propagate_simple(w_i, phase, method)
     
     w_o = ifft2(fftshift(inputFT .* H));
 end
+
